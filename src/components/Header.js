@@ -34,6 +34,11 @@ export default function Header(props) {
         backgroundRepeat: "no-repeat",
     }
 
+    const toggleModeStyles = {
+        backgroundColor: props.toggleMode ? "#fff" : "#25283c", 
+        color: props.toggleMode ? "black" : "fff"
+    }
+
     return (
         <div className='header' style={backgroundStyles}>
             <div id="header-info">
@@ -41,7 +46,7 @@ export default function Header(props) {
                 <img onClick={props.handleClick} src={props.toggleMode ? Sun : Moon} alt="toggle between light and dark mode" id="toggle-icon"/>
             </div>
             <form onSubmit={props.handleSubmit}>
-                <input value={props.formData} onChange={props.handleChange} name="todo" id="todo" placeholder="Create A New Todo..."/>
+                <input value={props.formData} onChange={props.handleChange} name="todo" id="todo" placeholder="Create A New Todo..." style={toggleModeStyles}/>
                 <button>Submit</button>
             </form>
         </div>
