@@ -4,45 +4,36 @@ import Header from "./components/Header.js"
 import Todo from "./components/Todo.js"
 
 function App() {
-  // const getItems = 
   const [toggleMode, setToggleMode] = React.useState(true)
 
   function handleClick(){
       setToggleMode(prevState => !prevState)
   }
   
-  const [todoList, setTodoList] = React.useState([])
-  
-  const [todoChecked, setTodoChecked] = React.useState(false)
+  const [todoList, setTodoList] = React.useState(JSON.parse(localStorage.getItem('todo')))
 
-  const [todo, setTodo] = React.useState({
-      item: "",
-      todoChecked: todoChecked,
+  const [formData, setFormData] = React.useState({
+    item: "",
+    checked: false
   })
-
-  const [formData, setFormData] = React.useState("")
   
   function handleChange(event){
-    setFormData(event.target.value)
-    console.log(formData)
+    setFormData((prevState) => {
+      return {
+        ...prevState,
+        [event.target.name]: event.target.value
+      }
+    })
   }
 
   function handleSubmit(event){
     event.preventDefault();
-    setTodo((prevState) => {
-      return {
-        ...todo,
-        item: formData
-      }
-    })
-    console.log(todo)
+    localStorage.setItem('todo', todoList === null ? JSON.stringify([formData]) : JSON.stringify([...todoList, formData]));
   }
 
   React.useEffect(() => {
-    console.log("I am in love")
-    localStorage.setItem('todo', todoList === null ? JSON.stringify([todo]) : JSON.stringify([...todoList, todo]));
-    setTodoList(JSON.parse(localStorage.getItem('todo')))
-  }, [todo])
+      setTodoList(JSON.parse(localStorage.getItem('todo')))
+  }, [])
 
   return (
     <div className="App">
@@ -54,7 +45,7 @@ function App() {
         handleSubmit={handleSubmit}
       />
       <Todo 
-        
+        todoList={todoList}
       />
     </div>
   );
