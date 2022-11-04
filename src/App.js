@@ -3,14 +3,24 @@ import React from 'react'
 import Header from "./components/Header.js"
 import Todo from "./components/Todo.js"
 
+// import background images
+
+
 function App() {
+  // styles
   const [toggleMode, setToggleMode] = React.useState(true)
 
   function handleClick(){
-      setToggleMode(prevState => !prevState)
+    setToggleMode(prevState => !prevState)
+  } 
+
+  const toggleModeStyles = {
+    backgroundColor: toggleMode ? "#fff" : "#25283c", 
+    color: toggleMode ? "black" : "#fff"
   }
   
-  const [todoList, setTodoList] = React.useState(JSON.parse(localStorage.getItem('todo')))
+  const [todoList, setTodoList] = React.useState(
+    () => JSON.parse(localStorage.getItem('todo')) || [])
 
   const [formData, setFormData] = React.useState({
     item: "",
@@ -28,12 +38,15 @@ function App() {
 
   function handleSubmit(event){
     event.preventDefault();
-    localStorage.setItem('todo', todoList === null ? JSON.stringify([formData]) : JSON.stringify([...todoList, formData]));
+    setTodoList((prevTodos) => {
+      return [...todoList, formData]
+    })
+    
   }
 
   React.useEffect(() => {
-      setTodoList(JSON.parse(localStorage.getItem('todo')))
-  }, [])
+    localStorage.setItem('todo', JSON.stringify(todoList));
+  }, [todoList])
 
   return (
     <div className="App">
@@ -43,9 +56,11 @@ function App() {
         formData={formData}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
+        toggleModeStyles={toggleModeStyles}
       />
       <Todo 
         todoList={todoList}
+        toggleModeStyles={toggleModeStyles}
       />
     </div>
   );
