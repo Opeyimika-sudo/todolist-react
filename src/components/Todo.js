@@ -2,23 +2,27 @@ import React from 'react'
 import App from "../App.js"
 
 export default function Todo(props) {
-    console.log(props)
     const todoList = 
       props.todoList.map((item, id)=> (
         <div>
-            <p className="todo_item" key = {id} id={id} style={props.toggleModeStyles} onClick={() => props.toggleCompleted(id, item)}>
+            <p className="todo_item" key = {id} id={id} style={props.toggleModeStyles} >
             {
               item.checked
               ? 
-              <span className="material-symbols-outlined" >
+              <span className="material-symbols-outlined" onClick={() => props.toggleCompleted(id, item)}>
                   check_circle
               </span>
               : 
-              <span className="material-symbols-outlined">
+              <span className="material-symbols-outlined" onClick={() => props.toggleCompleted(id, item)}>
               circle
               </span> 
             } 
               { item.todo } 
+            {
+              <span className="material-symbols-outlined" onClick={()=> props.deleteTodo(id, item)}>
+                close
+              </span>
+            }
             </p>
         </div>
       ))
