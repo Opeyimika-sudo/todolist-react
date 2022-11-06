@@ -39,15 +39,22 @@ form {
   border-radius: 10px;
   height: 50%;
   margin-right: 30px;
+  width: 40%;
 }
 
 button{
   border: 3px solid white;
   border-radius: 10px;
   height: 50%;
+  
 }
 
-
+.todo_item {
+  width: 60%;
+  height: 50px;
+  border-bottom: 3px solid black;
+  margin: 0 auto;
+}
 /* ::placeholder {
   
 } */
