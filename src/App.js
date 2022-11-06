@@ -60,9 +60,11 @@ function App() {
       }
     })
     setTodoList(newTodos);
-    
-    console.log(id);
-    console.log(item);
+  } 
+
+  function deleteTodo(id, item){
+    const newTodos = todoList.filter((todo) => todo !== item);
+    setTodoList(newTodos);
   }
 
   React.useEffect(() => {
@@ -85,6 +87,7 @@ function App() {
         todoList={todoList}
         toggleModeStyles={toggleModeStyles}
         toggleCompleted={toggleCompleted}
+        deleteTodo={deleteTodo}
       />
     </div>
   );
