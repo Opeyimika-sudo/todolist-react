@@ -1,11 +1,6 @@
 import React from 'react'
 import App from "../App.js"
 
-
-
-// {todoList}
-// onClick={}
-
 export default function Todo(props) {
     console.log(props)
     const todoList = 
@@ -24,11 +19,6 @@ export default function Todo(props) {
               </span> 
             } 
               { item.todo } 
-            {
-              <span class="material-symbols-outlined">
-                close
-              </span>
-            }
             </p>
         </div>
       ))
