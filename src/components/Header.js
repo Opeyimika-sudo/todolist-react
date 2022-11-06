@@ -9,11 +9,11 @@ import mobile_light_background from '../images/bg-mobile-light.jpg'
 export default function Header(props) {
     
     const browserWidth = window.innerWidth
-
+    
     let bgImage;
 
     if (props.toggleMode){
-        if (browserWidth >= 800) {
+        if (browserWidth > 375) {
             bgImage=desktop_light_background
         }
         else{
@@ -21,7 +21,7 @@ export default function Header(props) {
         }
     }
     else {
-        if (browserWidth >= 800) {
+        if (browserWidth > 375) {
             bgImage = desktop_dark_background
         }
         else {
@@ -32,12 +32,8 @@ export default function Header(props) {
     const backgroundStyles= {
         backgroundImage: `url(${bgImage})`,
         backgroundRepeat: "no-repeat",
-    }
-
-    const toggleModeStyles = {
-        backgroundColor: props.toggleMode ? "#fff" : "#25283c", 
-        color: props.toggleMode ? "black" : "fff"
-    }
+        objectFit: "cover"
+      }
 
     return (
         <div className='header' style={backgroundStyles}>
@@ -46,7 +42,7 @@ export default function Header(props) {
                 <img onClick={props.handleClick} src={props.toggleMode ? Sun : Moon} alt="toggle between light and dark mode" id="toggle-icon"/>
             </div>
             <form onSubmit={props.handleSubmit}>
-                <input value={props.formData} onChange={props.handleChange} name="todo" id="todo" placeholder="Create A New Todo..." style={toggleModeStyles}/>
+                <input value={props.formData.todo} onChange={props.handleChange} name="todo" id="todo" placeholder="Create A New Todo..." style={props.toggleModeStyles}/>
                 <button>Submit</button>
             </form>
         </div>
