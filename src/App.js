@@ -3,9 +3,6 @@ import React from 'react'
 import Header from "./components/Header.js"
 import Todo from "./components/Todo.js"
 
-// import background images
-
-
 function App() {
   // styles
   const [toggleMode, setToggleMode] = React.useState(true)
@@ -15,9 +12,12 @@ function App() {
   } 
 
   const toggleModeStyles = {
-    backgroundColor: toggleMode ? "#fff" : "#25283c", 
+    backgroundColor: toggleMode ? "#f0f0f0" : "#25283c", 
     color: toggleMode ? "black" : "#fff"
   }
+
+  const body = document.querySelector("body");
+  body.style.backgroundColor = toggleMode ? "white" : "black";
 
   // remove text from input after submitting
   
@@ -67,6 +67,11 @@ function App() {
     setTodoList(newTodos);
   }
 
+  function clearCompleted(){
+    const newTodos = todoList.filter((todo) => todo.checked === false)
+    setTodoList(newTodos);
+  }
+
   React.useEffect(() => {
     localStorage.setItem('todo', JSON.stringify(todoList));
   }, [todoList])
@@ -88,6 +93,7 @@ function App() {
         toggleModeStyles={toggleModeStyles}
         toggleCompleted={toggleCompleted}
         deleteTodo={deleteTodo}
+        clearCompleted={clearCompleted}
       />
     </div>
   );
