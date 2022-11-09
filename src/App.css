@@ -31,7 +31,7 @@
 form {
   width: 60%;
   margin: 0 auto;
-  height: 50px;
+  height: 75px;
 }
 
 #todo {
@@ -40,21 +40,65 @@ form {
   height: 50%;
   margin-right: 30px;
   width: 40%;
+  padding-left: 15px;
 }
 
-button{
+#submit {
   border: 3px solid white;
   border-radius: 10px;
   height: 50%;
-  
 }
 
-.todo_item {
+.todoList {
+  margin-block: 20px;
   width: 60%;
-  height: 50px;
-  border-bottom: 3px solid black;
-  margin: 0 auto;
+  margin-inline: auto;
+  border-radius: 15px;
 }
-/* ::placeholder {
-  
-} */
+
+/* Todo Component */
+.todo_item {
+  height: 60px;
+  border-bottom: 1px solid black;
+  margin: 0 auto;
+  display: flex;
+  padding: 0 10px;
+  position: relative;
+  align-items: center;
+}
+
+.filters{
+  display: flex;
+  height: 50px;
+  margin: 0 auto;
+  padding: 0 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#check_circle{
+  background-image: linear-gradient(
+    to bottom right,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+}
+
+#check, #check_circle{
+  border-radius: 50%;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+  margin-right: 30px;
+}
+
+#check:hover, #check_circle:hover{
+  cursor: pointer;
+}
+
+#delete {
+  position: absolute;
+  right: 5px;
+}
+
+.filter-btn:hover{
+  cursor: pointer;
+}
