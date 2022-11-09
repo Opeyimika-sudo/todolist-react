@@ -1,5 +1,4 @@
 import React from 'react'
-import App from "../App.js"
 import '../App.css'
 
 export default function Todo(props) {
