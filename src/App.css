@@ -102,3 +102,18 @@ form {
 .filter-btn:hover{
   cursor: pointer;
 }
+
+/* Media queries */
+@media screen and (max-width: 400px){
+  form{
+    width: 90%;
+  }
+
+  .todoList{
+    width: 90%;
+  }
+
+  .filters{
+    gap: 5px;
+  }
+}
