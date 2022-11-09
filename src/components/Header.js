@@ -43,7 +43,7 @@ export default function Header(props) {
             </div>
             <form onSubmit={props.handleSubmit}>
                 <input value={props.formData.todo} onChange={props.handleChange} name="todo" id="todo" placeholder="Create A New Todo..." style={props.toggleModeStyles}/>
-                <button>Submit</button>
+                <button id="submit">Submit</button>
             </form>
         </div>
     )
