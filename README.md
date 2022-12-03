@@ -4,11 +4,8 @@ This is a todo list built with React. You can create to-do items, check and unch
 
 ## Screenshot
 ![View all todos](src/images/screenshot_img_all.jpg)
-View all todos
 ![View all active todos](src/images/screenshot_img_active.jpg)
-View all active todos
 ![View all completed todos in Dark mode](src/images/dark_screenshot_img_completed.jpg)
-View all completed todos in Dark mode
 
 ## Links
 - Live Link: (https://opeyimika-todolist-react.netlify.app/)
