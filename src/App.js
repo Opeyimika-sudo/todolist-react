@@ -3,14 +3,33 @@ import React from 'react'
 import Header from "./components/Header.js"
 import Todo from "./components/Todo.js"
 
+
 function App() {
   // styles
   const [toggleMode, setToggleMode] = React.useState(true)
 
+  // set state for Filters
+  const [filters, setFilters] = React.useState("")
   function handleClick(){
     setToggleMode(prevState => !prevState)
   } 
 
+
+  // function that runs on click of filters
+  function handleFilterClick(id){
+    setFilters("")
+    if(id === 1){
+      setFilters("All")
+    }
+    else if(id === 2){
+      setFilters("Active")
+    }
+    else if(id === 3){
+      setFilters("Completed")
+    }
+  }
+
+  
   const toggleModeStyles = {
     backgroundColor: toggleMode ? "#f0f0f0" : "#25283c", 
     color: toggleMode ? "black" : "#fff"
@@ -90,10 +109,13 @@ function App() {
       />
       <Todo 
         todoList={todoList}
+        toggleMode={toggleMode}
         toggleModeStyles={toggleModeStyles}
         toggleCompleted={toggleCompleted}
         deleteTodo={deleteTodo}
         clearCompleted={clearCompleted}
+        filters = {filters}
+        handleFilterClick={handleFilterClick}
       />
     </div>
   );
