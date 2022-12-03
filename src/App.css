@@ -99,9 +99,9 @@ form {
   right: 5px;
 }
 
-.filter-btn:hover{
+/* .filter-btn:hover{
   cursor: pointer;
-}
+} */
 
 /* Media queries */
 @media screen and (max-width: 400px){
