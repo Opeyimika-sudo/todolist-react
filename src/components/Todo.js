@@ -13,13 +13,13 @@ export default function Todo(props) {
     const todoListFilters = 
       <div className="filters">
               {props.todoList.length > 0 && <p> {props.todoList.filter(item => item.checked === false).length > 1 ? `${props.todoList.filter(item => item.checked === false).length} Items Left`: `${props.todoList.filter(item => item.checked === false).length} Item Left`}</p>}
-              <p 
+              <p className='filter-btn'
               style={{color: props.filters === "All" ?  "blue" : toggleModeFilter.color}}
               onClick={() => props.handleFilterClick(1)}>All</p>
-              <p 
+              <p className='filter-btn'
               style={{color: props.filters === "Active"? "blue" : toggleModeFilter.color}} 
               onClick={() => props.handleFilterClick(2)}>Active</p>  
-              <p 
+              <p className='filter-btn'
               style={{color: props.filters === "Completed" ? "blue" : toggleModeFilter.color}}
               onClick={() => props.handleFilterClick(3)}>Completed</p>
               <p onClick={()=> props.clearCompleted()}>Clear Completed</p>
